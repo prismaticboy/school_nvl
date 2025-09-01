@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("The Question")
+define config.name = _("恰哩仔")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "7.0"
+define config.version = "1.0"
 
 
 ## Text that is placed on the game's about screen. To insert a blank line
@@ -44,10 +44,10 @@ Written By: mikey""")
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "the_question"
+define build.name = "qializai"
 
 ## Change the version used by the build system.
-define build.version = "7.0"
+define build.version = "1.0"
 
 ## Sounds and music ############################################################
 
@@ -56,7 +56,7 @@ define build.version = "7.0"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = False
+define config.has_voice = True
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -87,12 +87,12 @@ define config.exit_transition = dissolve
 
 ## A transition that is used after a game has been loaded.
 
-define config.after_load_transition = None
+define config.after_load_transition = dissolve
 
 
 ## Used when entering the main menu after the game has ended.
 
-define config.end_game_transition = None
+define config.end_game_transition = dissolve
 
 
 ## A variable to set the transition used when the game starts does not exist.
@@ -123,7 +123,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 50
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0
@@ -213,7 +213,7 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-define build.itch_project = "renpytom/the-question"
+define build.itch_project = "renpytom/qializai"
 
 
 # Enable the console.
