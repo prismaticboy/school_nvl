@@ -398,16 +398,24 @@ style navigation_button_text:
 # style main_menu_version:
 #     properties gui.text_properties("version")
 
-transform main_bg:
-    alpha 0.0
-    linear 1.0 alpha 1.0
-    linear 1.0 alpha 0.0
-    repeat
+
 
 
 screen main_menu():
+
     tag menu
-    add gui.bg_library_morning
+    add gui.bg_library_morning at transform_main_menu_bg_zoomin
+
+    vbox:
+        xpos 50
+        ypos 50
+        spacing 10
+        
+        imagebutton:
+            idle "gui/button/normal_button.png"
+            foreground Text("开始", style = "style_main_menu_button_text")
+            at transform_main_menu_button
+            action Start()
 
 ## Game Menu screen ############################################################
 ##
