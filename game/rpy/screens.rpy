@@ -410,12 +410,71 @@ screen main_menu():
         xpos 50
         ypos 50
         spacing 10
-        
-        imagebutton:
-            idle "gui/button/normal_button.png"
-            foreground Text("开始", style = "style_main_menu_button_text")
-            at transform_main_menu_button
-            action Start()
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("开始"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav"
+                at transform_main_menu_button()
+                action Start()
+            at transform_main_menu_button2(0.5)
+
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("继续"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav"
+                at transform_main_menu_button()
+                action ShowMenu('load')
+            at transform_main_menu_button2(0.7)
+
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("设置"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav"
+                at transform_main_menu_button()
+                action ShowMenu('preferences')
+            at transform_main_menu_button2(0.9)
+
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("关于"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav" 
+                at transform_main_menu_button()
+                action ShowMenu('about')
+            at transform_main_menu_button2(1.1)
+
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("帮助"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav" 
+                at transform_main_menu_button()
+                action ShowMenu('help')
+            at transform_main_menu_button2(1.3)
+
+        fixed:
+            xsize 300
+            ysize 100
+            imagebutton:
+                idle "gui/button/normal_button.png"
+                foreground Text(_("退出"), style = "style_main_menu_button_text")
+                hover_sound "audio/cursor8.wav"
+                at transform_main_menu_button()
+                action Quit(confirm=True)
+            at transform_main_menu_button2(1.5)
 
 ## Game Menu screen ############################################################
 ##
@@ -441,10 +500,10 @@ screen game_menu(title, scroll=None):
         hbox:
 
             ## Reserve space for the navigation section.
-            frame:
+            fixed:
                 style "game_menu_navigation_frame"
 
-            frame:
+            fixed:
                 style "game_menu_content_frame"
 
                 if scroll == "viewport":

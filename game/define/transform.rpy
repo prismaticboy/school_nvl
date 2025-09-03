@@ -7,15 +7,16 @@ transform transform_main_menu_bg_zoomin:
     align (0.5, 0.5)
     easein2 1.0 zoom 1.1
 
-transform transform_main_menu_button:
-    zoom 0.5
-    pos (100, 100)
+transform transform_main_menu_button():
+    size (160, 80)
     anchor (0.5, 0.5)
+    xpos -160
     on idle:
-        linear 0.2 zoom 1.0
-    on start:
-        xpos -100
-        easein2 1 xpos 50
+        linear 0.05 zoom 1.0
     on hover:
-        zoom 1.0
-        bop_in_time_warp 0.2 zoom 1.1
+        bop_in_time_warp 0.1 zoom 1.1
+
+transform transform_main_menu_button2(delay):
+    on start:
+        time delay
+        bop_to_time_warp 0.5 xpos 200
