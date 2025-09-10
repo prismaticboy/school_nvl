@@ -12,9 +12,9 @@ transform transform_main_menu_button():
     anchor (0.5, 0.5)
     xpos -160
     on idle:
-        linear 0.05 zoom 1.0
+        linear 0.05 zoom 1.0 xoffset 0
     on hover:
-        bop_in_time_warp 0.1 zoom 1.1
+        bop_in_time_warp 0.1 zoom 1.1 xoffset 20
 
 transform transform_main_menu_button2(delay):
     on start:

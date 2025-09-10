@@ -405,7 +405,8 @@ screen main_menu():
 
     tag menu
     add gui.bg_library_morning at transform_main_menu_bg_zoomin
-
+    on "show" action [Play("music", Silent_Road, loop=True, fadein=1.0),Play("background", autumn_insects6, loop=True, fadein=1.0, relative_volume=0.1)]
+    
     vbox:
         xpos 50
         ypos 50
@@ -416,7 +417,8 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("开始"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav"
+                hover_sound button01
+                activate_sound button02
                 at transform_main_menu_button()
                 action Start()
             at transform_main_menu_button2(0.5)
@@ -427,10 +429,11 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("继续"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav"
+                hover_sound button01
+                activate_sound button02
                 at transform_main_menu_button()
                 action ShowMenu('load')
-            at transform_main_menu_button2(0.7)
+            at transform_main_menu_button2(0.55)
 
         fixed:
             xsize 300
@@ -438,10 +441,11 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("设置"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav"
+                hover_sound button01
+                activate_sound button02
                 at transform_main_menu_button()
                 action ShowMenu('preferences')
-            at transform_main_menu_button2(0.9)
+            at transform_main_menu_button2(0.6)
 
         fixed:
             xsize 300
@@ -449,10 +453,11 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("关于"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav" 
+                hover_sound button01
+                activate_sound button02 
                 at transform_main_menu_button()
                 action ShowMenu('about')
-            at transform_main_menu_button2(1.1)
+            at transform_main_menu_button2(0.65)
 
         fixed:
             xsize 300
@@ -460,10 +465,11 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("帮助"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav" 
+                hover_sound button01
+                activate_sound button02 
                 at transform_main_menu_button()
                 action ShowMenu('help')
-            at transform_main_menu_button2(1.3)
+            at transform_main_menu_button2(0.7)
 
         fixed:
             xsize 300
@@ -471,10 +477,11 @@ screen main_menu():
             imagebutton:
                 idle "gui/button/normal_button.png"
                 foreground Text(_("退出"), style = "style_main_menu_button_text")
-                hover_sound "audio/cursor8.wav"
+                hover_sound button01
+                activate_sound button02
                 at transform_main_menu_button()
                 action Quit(confirm=True)
-            at transform_main_menu_button2(1.5)
+            at transform_main_menu_button2(0.75)
 
 ## Game Menu screen ############################################################
 ##
