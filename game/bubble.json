@@ -1,0 +1,20 @@
+{
+    "start_7d4e0978": {
+        "area": [
+            320,
+            120,
+            213,
+            150
+        ],
+        "properties": "bottom_right"
+    },
+    "start_9dcaa569": {
+        "area": [
+            800,
+            90,
+            160,
+            240
+        ],
+        "properties": "bottom_right"
+    }
+}

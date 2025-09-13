@@ -132,5 +132,6 @@
             }
         ]
     },
-    "renpyWarp.sdkPath": "d:\\Renpy\\renpy-8.4.1-sdk"
+    "renpyWarp.sdkPath": "d:\\Renpy\\renpy-8.4.1-sdk",
+    "commentTranslate.targetLanguage": "en"
 }

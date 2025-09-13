@@ -1280,19 +1280,71 @@ style help_label_text:
 ##
 ## http://www.renpy.org/doc/html/screen_special.html#confirm
 
+# screen confirm(message, yes_action, no_action):
+
+#     ## Ensure other screens do not get input while this screen is displayed.
+#     modal True
+
+#     zorder 200
+
+#     style_prefix "confirm"
+
+#     add "gui/overlay/confirm.png"
+
+#     frame:
+
+#         vbox:
+#             xalign .5
+#             yalign .5
+#             spacing 30
+
+#             label _(message):
+#                 style "confirm_prompt"
+#                 xalign 0.5
+
+#             hbox:
+#                 xalign 0.5
+#                 spacing 100
+
+#                 textbutton _("Yes") action yes_action
+#                 textbutton _("No") action no_action
+
+#     ## Right-click and escape answer "no".
+#     key "game_menu" action no_action
+
+
+# style confirm_frame is gui_frame
+# style confirm_prompt is gui_prompt
+# style confirm_prompt_text is gui_prompt_text
+# style confirm_button is gui_medium_button
+# style confirm_button_text is gui_medium_button_text
+
+# style confirm_frame:
+#     background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
+#     padding gui.confirm_frame_borders.padding
+#     xalign .5
+#     yalign .5
+
+# style confirm_prompt_text:
+#     textalign 0.5
+#     layout "subtitle"
+
+# style confirm_button:
+#     properties gui.button_properties("confirm_button")
+
+# style confirm_button_text:
+#     properties gui.text_properties("confirm_button")
+
 screen confirm(message, yes_action, no_action):
-
-    ## Ensure other screens do not get input while this screen is displayed.
     modal True
-
     zorder 200
 
-    style_prefix "confirm"
-
-    add "gui/overlay/confirm.png"
+    add "gui/overlay/confirm.png" at transform_confirm_bg_zoomin
 
     frame:
-
+        
+        align (0.5, 0.5)
+        background None
         vbox:
             xalign .5
             yalign .5
@@ -1310,30 +1362,8 @@ screen confirm(message, yes_action, no_action):
                 textbutton _("No") action no_action
 
     ## Right-click and escape answer "no".
-    key "game_menu" action no_action
+    key "game_menu" action no_action    
 
-
-style confirm_frame is gui_frame
-style confirm_prompt is gui_prompt
-style confirm_prompt_text is gui_prompt_text
-style confirm_button is gui_medium_button
-style confirm_button_text is gui_medium_button_text
-
-style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
-    padding gui.confirm_frame_borders.padding
-    xalign .5
-    yalign .5
-
-style confirm_prompt_text:
-    textalign 0.5
-    layout "subtitle"
-
-style confirm_button:
-    properties gui.button_properties("confirm_button")
-
-style confirm_button_text:
-    properties gui.text_properties("confirm_button")
 
 
 ## Skip indicator screen #######################################################
@@ -1548,6 +1578,96 @@ style nvl_button:
 style nvl_button_text:
     properties gui.text_properties("nvl_button")
 
+## 对话气泡屏幕 ######################################################################
+##
+## 对话气泡屏幕用于以对话气泡的形式向玩家显示对话。对话气泡屏幕的参数与 say 屏
+## 幕相同，必须创建一个 id 为 what 的可视控件，并且可以创建 id 为 namebox、who 和
+## window 的可视控件。
+##
+## https://doc.renpy.cn/zh-CN/bubble.html#bubble-screen
+
+screen bubble(who, what):
+    style_prefix "bubble"
+
+    window:
+        id "window"
+
+        if who is not None:
+
+            window:
+                id "namebox"
+                style "bubble_namebox"
+
+                text who:
+                    id "who"
+
+        text what:
+            id "what"
+
+        default ctc = None
+        showif ctc:
+            add ctc
+
+style bubble_window is empty
+style bubble_namebox is empty
+style bubble_who is default
+style bubble_what is default
+
+style bubble_window:
+    xpadding 30
+    top_padding 5
+    bottom_padding 5
+
+style bubble_namebox:
+    xalign 0.5
+
+style bubble_who:
+    xalign 0.5
+    textalign 0.5
+    color "#000"
+
+style bubble_what:
+    align (0.5, 0.5)
+    text_align 0.5
+    layout "subtitle"
+    color "#000"
+
+define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
+define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)
+
+define bubble.properties = {
+    "bottom_left" : {
+        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=1),
+        "window_bottom_padding" : 27,
+    },
+
+    "bottom_right" : {
+        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=1),
+        "window_bottom_padding" : 27,
+    },
+
+    "top_left" : {
+        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=-1),
+        "window_top_padding" : 27,
+    },
+
+    "top_right" : {
+        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=-1),
+        "window_top_padding" : 27,
+    },
+
+    "thought" : {
+        "window_background" : bubble.thoughtframe,
+    }
+}
+
+define bubble.expand_area = {
+    "bottom_left" : (0, 0, 0, 22),
+    "bottom_right" : (0, 0, 0, 22),
+    "top_left" : (0, 22, 0, 0),
+    "top_right" : (0, 22, 0, 0),
+    "thought" : (0, 0, 0, 0),
+}
 
 
 ################################################################################

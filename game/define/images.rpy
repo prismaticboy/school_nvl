@@ -23,8 +23,5 @@ image bg library_night_light = "images/background/library_night_light.jpg"
 image bg library_night = "images/background/library_night.jpg"
 image bg library_noon = "images/background/library_noon.jpg"
 
-
-# image new_game_button_text:
-#     contains:
-#         Text("开始", style = "style_main_menu_button_text")
-
+image wenxuan = "images/character/el_angry.png"
+image test = "images/character/wenxuan_test.png"
