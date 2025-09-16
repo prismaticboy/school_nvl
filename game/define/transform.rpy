@@ -8,11 +8,11 @@ transform transform_main_menu_bg_zoomin:
     easein2 1.0 zoom 1.1
 
 transform transform_confirm_bg_zoomin:
-    zoom 1.1
+    zoom 0.5
     alpha 0.0
     anchor (0.5, 0.5)
     align (0.5, 0.5)
-    easeout_circ 0.1 zoom 1.0 alpha 1.0
+    easeout_circ 0.2 zoom 1.0 alpha 1.0
 
 transform transform_main_menu_button():
     size (160, 80)

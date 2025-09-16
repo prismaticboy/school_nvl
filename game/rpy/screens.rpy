@@ -1342,7 +1342,7 @@ screen confirm(message, yes_action, no_action):
     add "gui/overlay/confirm.png" at transform_confirm_bg_zoomin
 
     frame:
-        
+        at transform_confirm_bg_zoomin
         align (0.5, 0.5)
         background None
         vbox:
@@ -1351,15 +1351,21 @@ screen confirm(message, yes_action, no_action):
             spacing 30
 
             label _(message):
-                style "confirm_prompt"
+                text_style "style_config_menu_button_text"
                 xalign 0.5
 
             hbox:
                 xalign 0.5
                 spacing 100
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+                textbutton _("Yes"):
+                    text_style "style_config_menu_button_text"
+                    action [Play("sound",button02),yes_action]
+                    hover_sound button01
+                textbutton _("No"):
+                    text_style "style_config_menu_button_text"
+                    action [Play("sound",button02),no_action]
+                    hover_sound button01
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action    
